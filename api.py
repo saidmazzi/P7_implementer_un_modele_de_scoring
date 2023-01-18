@@ -190,7 +190,7 @@ def features_engineering(data_train, data_test):
     le = LabelEncoder()
     le_count = 0
 
-    # Iterate through the columns
+    # Itération à chaque colonne
     for col in data_train:
         if data_train[col].dtype == 'object':
             # If 2 or fewer unique categories
@@ -207,22 +207,22 @@ def features_engineering(data_train, data_test):
 
     # ONE HOT ENCODING :
 
-    #one-hot encoding of categorical variables
+    #one-hot encoding sur les variabes catégorielles
     data_train = pd.get_dummies(data_train)
     data_test = pd.get_dummies(data_test)
 
     train_labels = data_train['TARGET']
-    # Align the training and testing data, keep only columns present in both dataframes
+    # Alignement des datas "train" et "test", On garde les colonnes présentes dans les deux dataframes.
     data_train, data_test = data_train.align(data_test, join = 'inner', axis = 1)
-    # Add the target back in
+    # On rajoute la cible
     data_train['TARGET'] = train_labels
 
 
     # VALEURS ABERRANTES
 
-    # Create an anomalous flag column
+    # On créé une colonne d'indicateur d'anomalie (flag)
     data_train['DAYS_EMPLOYED_ANOM'] = data_train["DAYS_EMPLOYED"] == 365243
-    # Replace the anomalous values with nan
+    # On remplace les valeurs anormales avec des "Nan"
     data_train['DAYS_EMPLOYED'].replace({365243: np.nan}, inplace = True)
     data_test['DAYS_EMPLOYED_ANOM'] = data_test["DAYS_EMPLOYED"] == 365243
     data_test["DAYS_EMPLOYED"].replace({365243: np.nan}, inplace = True)
@@ -259,7 +259,7 @@ def preprocesseur(df_train, df_test):
 
     # Cette fonction permet d'imputer les valeurs manquantes dans chaque dataset et aussi d'appliquer un MinMaxScaler
 
-    # Drop the target from the training data
+    # On supprime la "TRAGET" des données "Train"
     if "TARGET" in df_train:
         train = df_train.drop(columns = ["TARGET"])
     else:
@@ -269,23 +269,23 @@ def preprocesseur(df_train, df_test):
     features = list(train.columns)
 
 
-    # Median imputation of missing values
+    # Imputation médiane des valeurs manquantes
     imputer = SimpleImputer(strategy = 'median')
 
-    # Scale each feature to 0-1
+    # Mettre à l'échelle chaque feature à 0-1
     scaler = MinMaxScaler(feature_range = (0, 1))
 
-    # Replace the boolean column by numerics values
+    # On remplace la colonne booléenne par des valeurs numériques
     train["DAYS_EMPLOYED_ANOM"] = train["DAYS_EMPLOYED_ANOM"].astype("int")
 
-    # Fit on the training data
+    # Fit sur les données "Train"
     imputer.fit(train)
 
-    # Transform both training and testing data
+    # Transformez les données de "Train""et "test"
     train = imputer.transform(train)
     test = imputer.transform(df_test)
 
-    # Repeat with the scaler
+    # On répète avec le scaler
     scaler.fit(train)
     train = scaler.transform(train)
     test = scaler.transform(test)
@@ -324,4 +324,3 @@ def entrainement_knn(df):
 
 if __name__ == "__main__":
     app.run(debug=True)
-    #app.run(host="localhost", port="5000", debug=True)
