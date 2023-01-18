@@ -17,7 +17,7 @@ from sklearn.ensemble import RandomForestClassifier
 app = Flask(__name__)
 
 # On charge les données
-data_train = pd.read_csv("application_train.csv")
+data_train = pd.read_csv("application_train_red.csv")
 data_test = pd.read_csv("application_test.csv")
 
 train = None
@@ -31,7 +31,7 @@ id_client = pd.DataFrame(id_client)
 # Apprentissage du modèle
 @app.route("/init_model", methods=["GET"])
 def init_model():
-    
+
     # préparation des données
     df_train, df_test = features_engineering(data_train, data_test)
 
@@ -66,7 +66,7 @@ def init_model():
 # Chargement des données pour la selection de l'ID client
 @app.route("/load_data", methods=["GET"])
 def load_data():
-    
+
     return id_client.to_json(orient='values')
 
 # Chargement d'informations générales
@@ -105,7 +105,7 @@ def infos_client():
        "annuites" : data_client["AMT_ANNUITY"].item(),
        "montant_bien" : data_client["AMT_GOODS_PRICE"].item()
        }
-    
+
     response = json.loads(data_client.to_json(orient='index'))
 
     return response
@@ -113,42 +113,42 @@ def infos_client():
 # Calcul des ages de la population pour le graphique situant l'age du client
 @app.route("/load_age_population", methods=["GET"])
 def load_age_population():
-    
+
     df_age = round((data_train["DAYS_BIRTH"] / -365), 2)
     return df_age.to_json(orient='values')
 
 # Segmentation des revenus de la population pour le graphique situant l'age du client
 @app.route("/load_revenus_population", methods=["GET"])
 def load_revenus_population():
-    
+
     # On supprime les outliers qui faussent le graphique de sortie
     # Cette opération supprime un peu moins de 300 lignes sur une
     # population > 300000...
     df_revenus = data_train[data_train["AMT_INCOME_TOTAL"] < 700000]
-    
+
     df_revenus["tranches_revenus"] = pd.cut(df_revenus["AMT_INCOME_TOTAL"], bins=20)
     df_revenus = df_revenus[["AMT_INCOME_TOTAL", "tranches_revenus"]]
     df_revenus.sort_values(by="AMT_INCOME_TOTAL", inplace=True)
 
     print(df_revenus)
-    
+
     df_revenus = df_revenus["AMT_INCOME_TOTAL"]
 
     return df_revenus.to_json(orient='values')
 
 @app.route("/predict", methods=["GET"])
 def predict():
-    
+
     id = request.args.get("id_client")
 
     print("Analyse data_test :")
     print(data_test.shape)
     print(data_test[data_test["SK_ID_CURR"] == int(id)])
-     
+
     index = data_test[data_test["SK_ID_CURR"] == int(id)].index.values
 
     print(index[0])
-   
+
     data_client = test[index]
 
     print(data_client)
@@ -163,13 +163,13 @@ def predict():
 
 @app.route("/load_neighbors", methods=["GET"])
 def load_neighbors():
-    
+
     id = request.args.get("id_client")
 
     index = data_test[data_test["SK_ID_CURR"] == int(id)].index.values
 
     data_client = test[index]
-    
+
     distances, indices = knn.kneighbors(data_client)
 
     print("indices")
@@ -178,7 +178,7 @@ def load_neighbors():
     print(distances)
 
     df_neighbors = data_train.iloc[indices[0], :]
-    
+
     response = json.loads(df_neighbors.to_json(orient='index'))
 
     return response
@@ -200,13 +200,13 @@ def features_engineering(data_train, data_test):
                 # Transform both training and testing data
                 data_train[col] = le.transform(data_train[col])
                 data_test[col] = le.transform(data_test[col])
-                
+
                 # Keep track of how many columns were label encoded
                 le_count += 1
 
 
-    # ONE HOT ENCODING : 
-    
+    # ONE HOT ENCODING :
+
     #one-hot encoding of categorical variables
     data_train = pd.get_dummies(data_train)
     data_test = pd.get_dummies(data_test)
@@ -219,7 +219,7 @@ def features_engineering(data_train, data_test):
 
 
     # VALEURS ABERRANTES
-  
+
     # Create an anomalous flag column
     data_train['DAYS_EMPLOYED_ANOM'] = data_train["DAYS_EMPLOYED"] == 365243
     # Replace the anomalous values with nan
@@ -230,16 +230,16 @@ def features_engineering(data_train, data_test):
     # Traitement des valeurs négatives
     data_train['DAYS_BIRTH'] = abs(data_train['DAYS_BIRTH'])
 
-    
+
     # CREATION DE VARIABLES
-    
+
     # Ces fonctionnalités sont repris du kaggle d'Aguiar :
-    
+
     #CREDIT_INCOME_PERCENT : le pourcentage du montant du crédit par rapport au revenu d'un client
     # ANNUITY_INCOME_PERCENT : le pourcentage de l'annuité du prêt par rapport au revenu d'un client
     # CREDIT_TERM : la durée du paiement en mois (puisque l'annuité est le montant mensuel dû
     # DAYS_EMPLOYED_PERCENT : le pourcentage de jours employés par rapport à l'âge du client
-    
+
     data_train_domain = data_train.copy()
     data_test_domain = data_test.copy()
 
@@ -256,7 +256,7 @@ def features_engineering(data_train, data_test):
     return data_train_domain, data_test_domain
 
 def preprocesseur(df_train, df_test):
-    
+
     # Cette fonction permet d'imputer les valeurs manquantes dans chaque dataset et aussi d'appliquer un MinMaxScaler
 
     # Drop the target from the training data
@@ -264,7 +264,7 @@ def preprocesseur(df_train, df_test):
         train = df_train.drop(columns = ["TARGET"])
     else:
         train = df_train.copy()
-        
+
     # Feature names
     features = list(train.columns)
 
@@ -275,7 +275,7 @@ def preprocesseur(df_train, df_test):
     # Scale each feature to 0-1
     scaler = MinMaxScaler(feature_range = (0, 1))
 
-    # Replace the boolean column by numerics values 
+    # Replace the boolean column by numerics values
     train["DAYS_EMPLOYED_ANOM"] = train["DAYS_EMPLOYED_ANOM"].astype("int")
 
     # Fit on the training data
@@ -289,7 +289,7 @@ def preprocesseur(df_train, df_test):
     scaler.fit(train)
     train = scaler.transform(train)
     test = scaler.transform(test)
-    
+
     return train, test
 
 def data_resampler(df_train, target):
@@ -302,14 +302,14 @@ def data_resampler(df_train, target):
 def entrainement_randomforest(X, y):
 
     # Configuration optimum trouvée par le GridSearchCV
-    clf_rfc = RandomForestClassifier( 
+    clf_rfc = RandomForestClassifier(
                                       n_estimators= 10,
                                       max_depth = 2,
                                       random_state = 0,
                                       max_samples = .15
                                     )
-    
- 
+
+
 
     clf_rfc.fit(X, y)
 
@@ -320,7 +320,7 @@ def entrainement_knn(df):
     print("En cours...")
     knn = NearestNeighbors(n_neighbors=10, algorithm='auto').fit(df)
 
-    return knn 
+    return knn
 
 if __name__ == "__main__":
     app.run(debug=True)
