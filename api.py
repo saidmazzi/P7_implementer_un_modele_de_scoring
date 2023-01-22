@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
 
-# On charge les données
+# Chargement les données
 data_train = pd.read_csv("application_train_red.csv")
 data_test = pd.read_csv("application_test.csv")
 
