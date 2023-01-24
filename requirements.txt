@@ -208,7 +208,7 @@ nose
 notebook
 numba
 numexpr
-numpy
+#numpy
 numpydoc
 oauthlib==3.2.1
 olefile==0.46
