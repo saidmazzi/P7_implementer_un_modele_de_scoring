@@ -144,7 +144,7 @@ jedi
 jeepney==0.8.0
 Jinja2
 jmespath==1.0.1
-joblib
+joblib==1.0.1
 json5==0.9.5
 jsonschema
 jujubundlelib==0.5.7
