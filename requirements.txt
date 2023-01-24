@@ -197,7 +197,6 @@ munch==2.5.0
 murmurhash==1.0.8
 mypy-extensions==0.4.3
 natsort==8.2.0
-navigator-updater==0.2.1
 nbclassic
 nbclient
 nbconvert
