@@ -405,7 +405,7 @@ wurlitzer
 xgboost==1.6.1
 xlrd
 XlsxWriter
-xlwings==0.23.0
+#xlwings==0.23.0
 xlwt==1.3.0
 yapf
 yarl==1.8.1
