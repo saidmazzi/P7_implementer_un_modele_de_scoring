@@ -1,5 +1,5 @@
 # coding=utf-8
-#from joblib import load
+from joblib import load
 
 from flask import Flask, jsonify, request, jsonify, render_template
 import json
