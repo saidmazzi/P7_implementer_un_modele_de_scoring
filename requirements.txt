@@ -236,6 +236,7 @@ phasepack==1.5
 pickleshare
 Pillow
 pip==22.3.1
+pipenv==2022.12.19
 pkginfo==1.7.0
 platformdirs==2.6.0
 plotly
