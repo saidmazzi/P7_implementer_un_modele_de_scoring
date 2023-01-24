@@ -254,7 +254,7 @@ pyasn1-modules==0.2.8
 pycodestyle
 pycosat==0.6.3
 pycparser
-pycurl==7.43.0.6
+#pycurl==7.43.0.6
 pydantic==1.9.2
 pydeck==0.8.0
 pydicom==2.3.1
