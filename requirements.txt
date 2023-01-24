@@ -320,7 +320,6 @@ slicer==0.0.7
 smart-open==5.2.1
 smmap==5.0.0
 sniffio
-snowballstemme
 sortedcontainers 
 soupsieve 
 spacy==3.4.1
