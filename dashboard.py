@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 from flask import Flask
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
