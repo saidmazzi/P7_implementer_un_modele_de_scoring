@@ -267,7 +267,6 @@ pylint
 pyls-black
 pyls-spyder
 Pympler==1.0.1
-pyodbc===4.0.0-unsupported
 pyOpenSSL
 pyparsing
 pyproj==3.3.1
