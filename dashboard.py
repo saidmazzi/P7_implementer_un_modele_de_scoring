@@ -15,7 +15,7 @@ from flask import Flask
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #URL_API = "http://localhost:5000/"
-URL_API = "13.36.160.181"
+URL_API = "https://13.36.160.181:80/"
 def main():
 
     #init = st.markdown(init_api())
