@@ -56,7 +56,6 @@ click
 click-plugins==1.1.1
 cligj==0.7.2
 cloudpickle
-clyent==1.2.2
 colander==1.8.3
 colorama
 commonmark==0.9.1
