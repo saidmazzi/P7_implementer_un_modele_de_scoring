@@ -10,9 +10,11 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import NearestNeighbors
 
-from imblearn.under_sampling  import RandomUnderSampler
+from imblearn.under_sampling import RandomUnderSampler
 from sklearn.ensemble import RandomForestClassifier
 
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 app = Flask(__name__)
 
@@ -323,4 +325,5 @@ def entrainement_knn(df):
     return knn
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
+    #app.run(debug=True)
