@@ -271,7 +271,7 @@ Pympler==1.0.1
 pyOpenSSL
 pyparsing
 pyproj==3.3.1
-pyradiomics==3.0.1
+#pyradiomics==3.0.1
 pyrsistent
 PySocks
 pytest==6.2.3
