@@ -137,7 +137,7 @@ def init_api():
     # Requête permettant de récupérer la liste des ID clients
     init_api = requests.get(URL_API + "init_model", headers={
 "User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
-}))
+})
     init_api = init_api.json()
 
     return "Lancement application."
