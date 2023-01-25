@@ -16,7 +16,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #URL_API= "http://localhost:5000/""
 #URL_API = "http://13.36.160.181:80/"
-URL_API = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:80/"
+URL_API = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:8080/"
 #URL_API = "http://172.31.45.211:8080/"
 
 def main():
@@ -139,7 +139,7 @@ def init_api():
     init_api = requests.get(URL_API + "init_model")
     init_api = init_api.json()
 
-    return "Initialisation application terminée."
+    return {"data":"Initialisation application terminée."}
 
 @st.cache()
 def load_logo():
