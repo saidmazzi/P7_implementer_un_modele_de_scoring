@@ -17,7 +17,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 #URL_API= "http://localhost:5000/"
 #URL_API = "http://13.36.160.181:8080"
 #URL_API = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:80/"
-URL_API = "http://172.31.45.211:80"
+URL_API = "http://172.31.45.211:80/"
 
 def main():
 
