@@ -70,7 +70,7 @@ runOnSave = false
 
 # The port where the server will listen for client and browser connections.
 # Default: 8501
-port = 8080
+port = 80
 
 # Enables support for Cross-Origin Request Sharing, for added security.
 # Default: true
@@ -81,7 +81,7 @@ enableCORS = false
 
 # Internet address of the server server that the browser should connect to. Can be IP address or DNS name.
 # Default: 'localhost'
-serverAddress = "172.31.45.211"
+serverAddress = "13.36.160.181"
 
 # Whether to send usage statistics to Streamlit.
 # Default: true
@@ -89,7 +89,7 @@ gatherUsageStats = false
 
 # Port that the browser should use to connect to the server when in liveSave mode.
 # Default: whatever value is set in server.port.
-serverPort = 8080
+serverPort = 80
 
 [s3]
 
