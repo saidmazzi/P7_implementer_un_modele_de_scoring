@@ -329,5 +329,5 @@ def entrainement_knn(df):
 if __name__ == "__main__":
     #app.run(host='0.0.0.0', port=8080)
     #app.run(host='172.31.45.211', port=8080)
-    #app.run(host='13.36.160.181', port=80)
-    app.run()
+    app.run(host='13.36.160.181', port=8080)
+    #app.run()
