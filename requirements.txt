@@ -6,7 +6,7 @@ matplotlib
 Pillow
 Flask
 Flask-WTF==1.0.1
-joblib==1.0.1
+joblib==1.2.0
 json5==0.9.5
 ujson
 jsonschema
