@@ -139,7 +139,7 @@ def init_api():
     init_api = requests.get(URL_API + "init_model")
     init_api = init_api.json()
 
-    return {"data":"Initialisation application terminée."}
+    return "Lancement application."
 
 @st.cache()
 def load_logo():
