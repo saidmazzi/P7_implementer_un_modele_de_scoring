@@ -7,4 +7,7 @@ Pillow
 Flask
 Flask-WTF==1.0.1
 json5==0.9.5
+ujson
+jsonschema
+python-jsonrpc-server
 numpy==1.20.1
