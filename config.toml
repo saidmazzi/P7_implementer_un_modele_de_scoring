@@ -81,7 +81,7 @@ enableCORS = false
 
 # Internet address of the server server that the browser should connect to. Can be IP address or DNS name.
 # Default: 'localhost'
-serverAddress = "https://13.36.160.181:80"
+serverAddress = "https://13.36.160.181:8080"
 
 # Whether to send usage statistics to Streamlit.
 # Default: true
@@ -89,7 +89,7 @@ gatherUsageStats = false
 
 # Port that the browser should use to connect to the server when in liveSave mode.
 # Default: whatever value is set in server.port.
-serverPort = 80
+serverPort = 8080
 
 [s3]
 
