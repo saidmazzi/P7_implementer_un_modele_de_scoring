@@ -303,6 +303,7 @@ ruamel.yaml==0.17.21
 ruamel.yaml.clib==0.2.7
 s3transfer==0.6.0
 sacremoses==0.0.53
+scikit-image-0.19.2
 scikit-learn==1.1.1
 scipy
 seaborn
