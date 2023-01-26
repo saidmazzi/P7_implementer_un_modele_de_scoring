@@ -24,11 +24,10 @@ HTTPConnection.default_socket_options = (
         (socket.SOL_TCP, socket.TCP_KEEPINTVL, 10),
         (socket.SOL_TCP, socket.TCP_KEEPCNT, 6)
     ]
+)
 
 #URL_API= "http://localhost:5000/""
-#URL_API = "http://13.36.160.181:80/"
 URL_API = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:8080/"
-#URL_API = "http://172.31.45.211:8080/"
 
 def main():
 
