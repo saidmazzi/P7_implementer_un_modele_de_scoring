@@ -14,17 +14,6 @@ from flask import Flask
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-import socket
-from urllib3.connection import HTTPConnection
-
-HTTPConnection.default_socket_options = (
-    HTTPConnection.default_socket_options + [
-        (socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1),
-        (socket.SOL_TCP, socket.TCP_KEEPIDLE, 45),
-        (socket.SOL_TCP, socket.TCP_KEEPINTVL, 10),
-        (socket.SOL_TCP, socket.TCP_KEEPCNT, 6)
-    ]
-)
 
 #URL_API= "http://localhost:5000/""
 URL_API = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:8080/"
@@ -145,9 +134,7 @@ def main():
 @st.cache
 def init_api():
     # Requête permettant de récupérer la liste des ID clients
-    init_api = requests.get(URL_API + "init_model", headers={
-"User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
-})
+    init_api = requests.get(URL_API + "init_model")
     init_api = init_api.json()
 
     return "Lancement application."
