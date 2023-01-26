@@ -1,5 +1,5 @@
 # coding=utf-8
-from joblib import load
+#from joblib import load
 
 from flask import Flask, jsonify, request, jsonify, render_template
 import json
@@ -37,9 +37,9 @@ id_client = pd.DataFrame(id_client)
 def init_model():
 
     # préparation des données
-    df_train, df_test = features_engineering(data_train, data_test)
+    df_train, df_test =  features_engineering(data_train, data_test)
 
-    print("Features engineering done")
+    print("Features Engineering done")
     # préprocessing des données
     df_train, df_test = preprocesseur(df_train, df_test)
 
@@ -270,7 +270,7 @@ def preprocesseur(df_train, df_test):
         train = df_train.copy()
 
     # Feature names
-    features = list(train.columns)
+    #features = list(train.columns)
 
 
     # Imputation médiane des valeurs manquantes
