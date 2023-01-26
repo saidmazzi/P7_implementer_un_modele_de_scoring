@@ -32,7 +32,7 @@ joblib==1.2.0
 json5==0.8.5
 jsonschema==3.2.0
 jupyter-client==5.3.4
-jupyter-core==4.6.1
+jupyter-core
 jupyterlab==1.2.5
 jupyterlab-server==1.0.6
 kiwisolver==1.1.0
