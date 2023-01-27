@@ -16,7 +16,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 #URL= "http://localhost:5000/""
-URL = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com/"
+URL = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:8080/"
 #URL = "http://13.36.160.181:8080/"
 
 def main():
@@ -135,7 +135,7 @@ def main():
 def init_api():
     # Requête permettant de récupérer la liste des ID clients
     init_api = requests.get(URL + "init_model")
-    init_api = init_api.json.load()
+    init_api = init_api.json()
 
     return "Lancement application."
 
