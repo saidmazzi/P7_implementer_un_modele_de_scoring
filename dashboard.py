@@ -21,7 +21,7 @@ URL = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com/"
 
 def main():
 
-    st.markdown(init_api())
+    #st.markdown(init_api())
     # Titre et du sous-titre
     st.title("Tableau de Board Client")
     st.subheader("Informations descriptives relatives au client et à un groupe de clients similaires.")
