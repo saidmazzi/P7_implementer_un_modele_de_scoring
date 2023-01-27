@@ -41,13 +41,13 @@ def init_model():
 
     print("Features Engineering done")
     # préprocessing des données
-    df_train, df_test = preprocesseur(df_train, df_test)
+    #df_train, df_test = preprocesseur(df_train, df_test)
 
     # transformation du dataset de test préparé en variabe globale, car il est utilisé dans la fonction predict
-    #global train
+    global train
     train = df_train.copy()
 
-    #global test
+    global test
     test = df_test.copy()
 
     print("Preprocessing done")
@@ -327,5 +327,5 @@ def entrainement_knn(df):
     return knn
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8080, debug=True)
     #app.run(host='13.36.160.181', port=8080)
