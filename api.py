@@ -41,7 +41,7 @@ def init_model():
 
     print("Features Engineering done")
     # préprocessing des données
-    #df_train, df_test = preprocesseur(df_train, df_test)
+    df_train, df_test = preprocesseur(df_train, df_test)
 
     # transformation du dataset de test préparé en variabe globale, car il est utilisé dans la fonction predict
     global train
