@@ -135,7 +135,7 @@ def main():
 def init_api():
     # Requête permettant de récupérer la liste des ID clients
     init_api = requests.get(URL + "init_model")
-    init_api = init_api.json()
+    init_api = init_api.json.load()
 
     return "Lancement application."
 
