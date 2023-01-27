@@ -17,7 +17,6 @@ keras-nightly==2.11.0.dev2022101007
 Keras-Preprocessing==1.1.2
 urllib3==1.26.5
 scikit-learn
-sklearn==0.0.post1
 scipy
 seaborn==0.12.2
 joblib==1.2.0
