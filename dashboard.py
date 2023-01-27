@@ -16,8 +16,8 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 #URL= "http://localhost:5000/""
-URL = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:8080/"
-#URL = "http://13.36.160.181:8080/"
+#URL = "http://ec2-13-36-160-181.eu-west-3.compute.amazonaws.com:8080/"
+URL = "http://13.36.160.181:8080/"
 
 def main():
 
