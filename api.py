@@ -44,10 +44,10 @@ def init_model():
     df_train, df_test = preprocesseur(df_train, df_test)
 
     # transformation du dataset de test préparé en variabe globale, car il est utilisé dans la fonction predict
-    global train
+    #global train
     train = df_train.copy()
 
-    global test
+    #global test
     test = df_test.copy()
 
     print("Preprocessing done")
