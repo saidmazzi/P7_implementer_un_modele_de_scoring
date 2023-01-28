@@ -134,7 +134,7 @@ def main():
 @st.cache
 def init_api():
     # Requête permettant de récupérer la liste des ID clients
-    init_api = requests.get(URL + "init_model").json()
+    init_api = requests.get(URL + "init_model", retries=Retry(10)).json()
     #init_api = init_api.json()
 
     return "Lancement application."
@@ -150,7 +150,7 @@ def load_logo():
 @st.cache()
 def load_selectbox():
     # Requête permettant de récupérer la liste des ID clients
-    data_json = requests.get(URL + "load_data")
+    data_json = requests.get(URL + "load_data", retries=Retry(10))
     data = data_json.json()
 
     # Récupération des valeurs sans les [] de la réponse
@@ -167,7 +167,7 @@ def load_infos_gen():
     # Le nombre de lignes de crédits existants dans la base
     # Le revenus moyens des clients
     # Le montant moyen des crédits existants
-    infos_gen = requests.get(URL + "infos_gen")
+    infos_gen = requests.get(URL + "infos_gen",retries=Retry(10))
     infos_gen = infos_gen.json()
 
     nb_credits = infos_gen[0]
@@ -177,7 +177,7 @@ def load_infos_gen():
     # Requête permettant de récupérer
     # Le nombre de target dans la classe 0
     # et la classe 1
-    targets = requests.get(URL + "disparite_target")
+    targets = requests.get(URL + "disparite_target",retries=Retry(10))
     targets = targets.json()
 
 
@@ -187,7 +187,7 @@ def load_infos_gen():
 def identite_client():
 
     # Requête permettant de récupérer les informations du client sélectionné
-    infos_client = requests.get(URL + "infos_client", params={"id_client":id_client})
+    infos_client = requests.get(URL + "infos_client", params={"id_client":id_client}, retries=Retry(10))
     #infos_client = infos_client.json()
 
     # On transforme la réponse en dictionnaire python
@@ -203,7 +203,7 @@ def load_age_population():
 
     # Requête permettant de récupérer les âges de la
     # population pour le graphique situant le client
-    data_age_json = requests.get(URL + "load_age_population")
+    data_age_json = requests.get(URL + "load_age_population", retries=Retry(10))
     data_age = data_age_json.json()
 
     return data_age
@@ -213,7 +213,7 @@ def load_revenus_population():
 
     # Requête permettant de récupérer des tranches de revenus
     # de la population pour le graphique situant le client
-    data_revenus_json = requests.get(URL + "load_revenus_population")
+    data_revenus_json = requests.get(URL + "load_revenus_population", retries=Retry(10))
 
     data_revenus = data_revenus_json.json()
 
@@ -223,7 +223,7 @@ def load_prediction():
 
     # Requête permettant de récupérer la prédiction
     # de faillite du client sélectionné
-    prediction = requests.get(URL + "predict", params={"id_client":id_client})
+    prediction = requests.get(URL + "predict", params={"id_client":id_client}, retries=Retry(10))
     prediction = prediction.json()
 
     return prediction[1]
@@ -231,7 +231,7 @@ def load_prediction():
 def load_neighbors():
 
     # Requête permettant de récupérer les 10 dossiers client ayant des similitudes avec le client sélectionné
-    neighbors = requests.get(URL + "load_neighbors", params={"id_client":id_client})
+    neighbors = requests.get(URL + "load_neighbors", params={"id_client":id_client}, retries=Retry(10))
 
     # On transforme la réponse en dictionnaire python
     neighbors = json.loads(neighbors.content.decode("utf-8"))
