@@ -7,6 +7,8 @@ import json
 import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
+import socket
+from urllib3.connection import HTTPConnection
 
 from flask import Flask
 #!/usr/bin/env python
@@ -135,7 +137,6 @@ def main():
 def init_api():
     # Requête permettant de récupérer la liste des ID clients
     init_api = requests.get(URL + "init_model").json()
-    #init_api = init_api.json()
 
     return "Lancement application."
 
