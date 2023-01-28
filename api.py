@@ -237,7 +237,7 @@ def features_engineering(data_train, data_test):
 
     # CREATION DE VARIABLES
 
-    # Ces fonctionnalités sont repris du kaggle d'Aguiar :
+    # Ces fonctionnalités sont repris du kaggle d'Aguiar (voir note méthodologique pour le lien) :
 
     #CREDIT_INCOME_PERCENT : le pourcentage du montant du crédit par rapport au revenu d'un client
     # ANNUITY_INCOME_PERCENT : le pourcentage de l'annuité du prêt par rapport au revenu d'un client
@@ -327,5 +327,5 @@ def entrainement_knn(df):
     return knn
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080)
     #app.run(host='13.36.160.181', port=8080)
